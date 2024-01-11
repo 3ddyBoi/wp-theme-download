@@ -12,7 +12,8 @@ Looked up solutions, found only WordPress plugins. Not about to load another plu
 
 1. Install Dependencies: Run `npm install`.
 2. Environment Variables: Create a .env file in the root directory. Add `WP_URL`, `WP_USER`, and `WP_PASSWORD` variables for your WordPress credentials.
-   > [!NOTE] >`WP_URL` should include the protocol (https://) and domain, but not any trailing slashes or paths (e.g., https://example.com).
+> [!NOTE]
+> `WP_URL` should include the protocol (https://) and domain, but not any trailing slashes or paths (e.g., https://example.com).
 3. Run the Script: Execute `npm run dev` to start the crawling process.
 
 The script logs into the WP admin, accesses the theme editor, and downloads files, handling duplicates by versioning. Files are saved in a structured format for easy navigation and searchability in any code editor.
