@@ -3,14 +3,18 @@ const getFilePath = (href: string) => {
     throw new Error("Could not find current file path");
   }
 
-  const fileParam = new URLSearchParams(href.split("?")[1]);
-  const filePath = fileParam.get("file");
+  try {
+    const url = new URL(href);
+    const filePath = url.searchParams.get("file");
 
-  if (!filePath) {
-    throw new Error("Could not find current file path");
+    if (!filePath) {
+      throw new Error("Could not find current file path");
+    }
+
+    return filePath;
+  } catch (e) {
+    throw new Error("Error parsing the URL: " + e.message);
   }
-
-  return filePath;
 };
 
 export default getFilePath;

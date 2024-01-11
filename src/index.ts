@@ -25,7 +25,7 @@ const startCrawling = async () => {
     "WP_PASSWORD",
   ]);
 
-  const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch({ headless: "new" });
   const page = await browser.newPage();
 
   await page.goto(`${WP_URL}/wp-login.php`);

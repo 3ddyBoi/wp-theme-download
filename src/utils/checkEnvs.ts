@@ -1,19 +1,25 @@
 const checkEnvs = (envNames: string[]): { [key: string]: string } => {
-  const missingEnvs = envNames.filter((envName) => !process.env[envName]);
+  const envs: { [key: string]: string } = {};
+  const missingEnvs: string[] = [];
+
+  for (const envName of envNames) {
+    const envValue = process.env[envName];
+    if (envValue) {
+      envs[envName] = envValue;
+    } else {
+      missingEnvs.push(envName);
+    }
+  }
 
   if (missingEnvs.length > 0) {
     const envList = missingEnvs.join(", ");
-    const isPlural = missingEnvs.length > 1;
     const errorMessage = `Missing required environment variable${
-      isPlural ? "s" : ""
+      missingEnvs.length > 1 ? "s" : ""
     }: ${envList}`;
     throw new Error(errorMessage);
   }
 
-  return envNames.reduce((acc, envName) => {
-    acc[envName] = process.env[envName] as string;
-    return acc;
-  }, {} as { [key: string]: string });
+  return envs;
 };
 
 export default checkEnvs;
