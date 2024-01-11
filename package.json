@@ -1,0 +1,21 @@
+{
+  "name": "wp-theme-download",
+  "description": "Automated WordPress Theme File Downloader: A Node.js-based crawler using Puppeteer to log in to WordPress, navigate the theme editor, and efficiently download theme files. Ideal for backup, migration, or development purposes.",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node build/index.js",
+    "dev": "dotenv -- ts-node src/index.ts"
+  },
+  "dependencies": {
+    "puppeteer": "21.7.0"
+  },
+  "engines": {
+    "node": "20.x"
+  },
+  "devDependencies": {
+    "@types/node": "20.11.0",
+    "dotenv-cli": "7.3.0",
+    "ts-node": "10.9.2",
+    "typescript": "5.3.3"
+  }
+}
